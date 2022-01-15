@@ -15,7 +15,7 @@ class PostController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index(){
         $post  = Post::where('status',1)->orderBy('id','desc')->paginate(2);
         return view ('post.index',compact('post'))->with('no',1);
@@ -42,7 +42,7 @@ class PostController extends Controller
         // if($image != '')
         // {
         //     $image_org = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '-' . time() . '-' . '.' . $image->getClientOriginalExtension();
-           
+
         //     $image_thumb = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME) . '-' . time() . '-' . '300x200' . '.' . $image->getClientOriginalExtension();
 
         //     $destinationPath= $request->file('image')->storeAs('image/original', $image_org, 'public');
@@ -51,7 +51,7 @@ class PostController extends Controller
 
         //     $post = Image::make($image)->resize(300,200)->save($destinationPath)
         //     ->resize(300,200)->save($destinationPath_thumb);
-           
+
         // }
 
         if ($request->hasFile('image')) {
@@ -82,7 +82,7 @@ class PostController extends Controller
         $post->title =  $request->title;
         $post->slug =  Str::slug($request->title,'-');
         $post->body =  $request->body;
-       
+
         $image_name = $request->hidden_image;
         $square_img = $request->file('square_avatar');
         if ($request->hasFile('image')) {

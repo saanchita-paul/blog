@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Blog</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -174,27 +174,25 @@ a.relative.inline-flex.items-center.px-4.py-2.ml-3.text-sm.font-medium.text-gray
                                         <th>SL.</th>
                                         <th>Title</th>
                                         <th>Image</th>
-                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $post= App\Models\Post::where('status',1)->paginate(10);
                                     $no=1;
                                     ?>
+
                                     @foreach($post as $pos)
                                     <tr class="even">
                                         <td>{{$no++}}</td>
-                                        <td>{{$pos->title}}</td>
+                                        <td> <a href="{{route('post.details', [$pos->slug])}}">{{$pos->title}}</a></td>
                                         <td>
+                                        <a href="{{route('post.details', [$pos->slug])}}">
                                             @if($pos->image)
                                             <img src="{{asset('images/blog/'.$pos->image)}}" width="70">
                                             @else
                                             <img src="{{asset('images/blog/dummy.jpg')}}" width="70">
                                             @endif
-                                        </td>
-                                        <td class="table-action">
-                                            <a href="{{route('post.edit',[$pos->id])}}"><i class="fas fa-edit"></i><a>
-                                            <a href="{{route('post.delete',[$pos->id])}}"><i class="fas fa-trash-alt" onClick="return confirm('Are you sure you want to Destroy this data permanently?')"></i></a>
+                                        </a>
                                         </td>
                                     </tr>
                                     @endforeach

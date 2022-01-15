@@ -15,10 +15,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -27,7 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $post = Post::where('status',1)->paginate(10);
+        return view('home',compact('post'));
     }
 
     public function postSlug($slug){

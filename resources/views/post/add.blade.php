@@ -5,8 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create Blog') }}</div>
-
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-9">
+                        {{ __('Create Post') }}
+                        </div>
+                        <div class="col-lg-3">
+                            <a href="{{ route('post.index') }}"><button type="submit" class="btn btn-primary">Go to List</button></a>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     @if(session()->has('success'))
                     <div class="alert alert-success" role="alert">
@@ -46,10 +54,10 @@
                             </span>
                             @enderror
                         </div>
-                      
+
 
                         <button type="submit" class="btn btn-primary">Insert</button>
-                        
+
                     </form>
                 </div>
             </div>

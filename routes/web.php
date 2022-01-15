@@ -30,4 +30,4 @@ Route::group(['prefix' => 'post'], function() {
     Route::get('/{id}/delete', 'App\Http\Controllers\PostController@delete')->name('post.delete');
 });
 
-Route::get('/post/{slug}', 'App\Http\Controllers\HomeController@postSlug');
+Route::get('/post/{slug}', 'App\Http\Controllers\HomeController@postSlug')->name('post.details');
